@@ -1,15 +1,20 @@
 #!/usr/local/bin/python3
-import numpy as np
 import csv
+import numpy as np
 import os
 
 class LinearRegress():
     def __init__(self):
         print("constructor")
+        self.constructMatrix()
         self.readCsv()
 
+    def constructMatrix(self):
+        print("make the three matrix")
+
     def readCsv(self):
-        os.chdir('../dropbox/gitProjects/Machine Learning TDT4137/Linear Regression- Assignment 1/regression')
+        os.chdir('../regression')
+        print("dir")
         cwd = os.getcwd()  # Get the current working directory (cwd)
         files = os.listdir(cwd)  # Get all the files in that directory
         print("Files in '%s': %s" % (cwd, files))
@@ -21,5 +26,5 @@ class LinearRegress():
 
 
 
+
 l1 = LinearRegress()
-print("helo")
