@@ -2,6 +2,8 @@
 import csv
 import numpy as np
 import os
+import matplotlib.pyplot as plt
+
 
 class LinearRegressOneFeature():
     def __init__(self):
@@ -23,8 +25,6 @@ class LinearRegressOneFeature():
                 counter += 1
             # number of observations in the CSV-file.
             counter = counter - 1
-            print(counter, "COUNTEREND")
-
         return dataArray, counter
 
 
@@ -50,7 +50,7 @@ class LinearRegressOneFeature():
         # Remove the two first elements, they should not be there:
         Y =  np.delete(Y,0)
         print(Y)
-        
+
         # *** M: Should have 3 columns, with each having row 1,x1,x2:
         place = 0
         for obs in dataArray:
@@ -58,15 +58,9 @@ class LinearRegressOneFeature():
             X[place,1]= obs[1]
             X[place,2] = obs[2]
             place += 1
+        plt.plot([1, 2, 3, 4])
+        plt.ylabel('some numbers')
+        plt.show()
 
-
-
-
-
-
-            # Y = np.append(Y, obs[2])
-            # print(Y)
-            # print(len(dataArray))
-            # print(len(Y))
 
 l1 = LinearRegressOneFeature()
