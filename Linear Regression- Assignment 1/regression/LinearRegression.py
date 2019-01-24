@@ -55,11 +55,16 @@ class LinearRegress():
             Y = np.append(Y, obs[2])
         # Remove the two first elements, they should not be there:
         Y =  np.delete(Y,0)
-
         # *** M: Should have 3 columns, with each having row 1,x1,x2:
+        print
         for obs in dataArray:
-            for row in range(1, 3 ):
-                for col in range():
+            print(obs)
+            for row in range(0, len(M)):
+                for col in range(1,3):
+                    print(M[row,col])
+                    M[row,col] = obs[(col-1)]
+        print(M)
+        print(M[0,1])
 
 
 
