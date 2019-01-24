@@ -64,7 +64,6 @@ class LinearRegress():
                     print(M[row,col])
                     M[row,col] = obs[(col-1)]
         print(M)
-        print(M[0,1])
 
 
 
