@@ -18,12 +18,15 @@ class LinearRegress():
         cwd = os.getcwd()  # Get the current working directory (cwd)
         files = os.listdir(cwd)  # Get all the files in that directory
         print("Files in '%s': %s" % (cwd, files))
+        # Lenth of csv file!! store it somewhere
 
         with open("train_2d_reg_data.csv") as f:
             reader = csv.reader(f)
+            counter = 0
             for row in reader:
                 print(' '.join(row))
-
+                counter += 1
+            print(counter-1, "This is counter")
 
 
 
