@@ -1,3 +1,5 @@
+#Two feature linear regression
+
 #!/usr/local/bin/python3
 import csv
 import numpy as np
@@ -7,7 +9,6 @@ import matplotlib.pyplot as plt
 
 class LinearRegressOneFeature():
     def __init__(self):
-        print("constructor")
         dataArray, numOfObs = self.readCsv()
         self.constructMatrix(dataArray, numOfObs)
 
@@ -33,15 +34,15 @@ class LinearRegressOneFeature():
         dataArray = np.delete(dataArray, 0, axis = 0 )
 
         # M has numOfObs rows and 3 columns!
-        M = np.ones((numOfObs, 3))
+        M = np.ones((numOfObs, 3),dtype=float)
         # print(M)
 
         # X has numOfObs rows and 3 columns!
-        X = np.ones((numOfObs, 3))
+        X = np.ones((numOfObs, 3),dtype=float)
         # print (X)
 
         # Y is just 1-d array:
-        Y = np.zeros([],dtype=int)
+        Y = np.zeros([],dtype=float)
 
         # Filling M, X and Y with the actual data from the CSV:
         # **** Y:
@@ -49,18 +50,38 @@ class LinearRegressOneFeature():
             Y = np.append(Y, obs[2])
         # Remove the two first elements, they should not be there:
         Y =  np.delete(Y,0)
-        print(Y)
+        Y = Y.astype(np.float)
 
-        # *** M: Should have 3 columns, with each having row 1,x1,x2:
+        # print(Y)
+
+        # *** M: Should have 3 columns, with each having row 1,x1,x2. Create X:
         place = 0
         for obs in dataArray:
             # print(obs)
             X[place,1]= obs[1]
             X[place,2] = obs[2]
             place += 1
-        plt.plot([1, 2, 3, 4])
-        plt.ylabel('some numbers')
-        plt.show()
+        # print(X)
+        # print(Y)
+
+        # Calculating the weights for two features:
+
+        Xtrans = np.transpose(X)
+        XtransDotX = np.dot(Xtrans, X)
+
+        # inverse of this result:
+        matrix1 = np.matrix(XtransDotX)
+
+        # Inverse it
+        matrix1 = matrix1.I
+
+        # Xtrans dotted with Y:
+        XtransDotY = np.dot(Xtrans, Y)
+
+        # Finally, to get w:
+        w = np.dot(matrix1, XtransDotY)
+        print(w)
+
 
 
 l1 = LinearRegressOneFeature()
