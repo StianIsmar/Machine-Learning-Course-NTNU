@@ -10,7 +10,8 @@ import matplotlib.pyplot as plt
 class LinearRegressOneFeature():
     def __init__(self):
         dataArray, numOfObs = self.readCsv()
-        self.constructMatrix(dataArray, numOfObs)
+        weights, X, Y = self.constructMatrix(dataArray, numOfObs)
+        self.calculateError(weights, X, Y)
 
     def readCsv(self):
         os.chdir('../regression')
@@ -81,7 +82,17 @@ class LinearRegressOneFeature():
         # Finally, to get w:
         w = np.dot(matrix1, XtransDotY)
         print(w)
+        return w, X, Y
 
+
+    # Calculating the model error:
+    def calculateError(self, weights, X, Y):
+        print("weights")
+        print(weights)
+        print("X")
+        print(X)
+        Xw = np.dot(X,weights.T)
+        print(Xw)
 
 
 l1 = LinearRegressOneFeature()
