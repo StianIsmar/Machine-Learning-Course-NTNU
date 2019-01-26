@@ -81,7 +81,6 @@ class LinearRegressOneFeature():
 
         # Finally, to get w:
         w = np.dot(matrix1, XtransDotY)
-        print(w)
         return w, X, Y
 
 
@@ -90,9 +89,15 @@ class LinearRegressOneFeature():
 
         # Need to transpose the weights so that X can be multiplied with X.
         # X needs is a 325x3 matrix, whilst weights is a 3x1 matrix after it is transposed!
-
         weights = weights.T
         Xw = np.dot(X,weights)
+
+        # Continue with the linear algebra to calculate the error:
+
+        error = (1/len(Y)) * (np.linalg.norm(np.subtract(Xw,Y)))**2
+        print("The error from the two-feature linear regression is: \n", error )
+
+
 
 
 
