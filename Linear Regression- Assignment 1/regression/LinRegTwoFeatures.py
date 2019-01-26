@@ -36,11 +36,9 @@ class LinearRegressOneFeature():
 
         # M has numOfObs rows and 3 columns!
         M = np.ones((numOfObs, 3),dtype=float)
-        # print(M)
 
         # X has numOfObs rows and 3 columns!
         X = np.ones((numOfObs, 3),dtype=float)
-        # print (X)
 
         # Y is just 1-d array:
         Y = np.zeros([],dtype=float)
@@ -53,17 +51,14 @@ class LinearRegressOneFeature():
         Y =  np.delete(Y,0)
         Y = Y.astype(np.float)
 
-        # print(Y)
 
         # *** M: Should have 3 columns, with each having row 1,x1,x2. Create X:
         place = 0
         for obs in dataArray:
-            # print(obs)
             X[place,1]= obs[1]
             X[place,2] = obs[2]
             place += 1
-        # print(X)
-        # print(Y)
+        
 
         # Calculating the weights for two features:
 
@@ -96,9 +91,5 @@ class LinearRegressOneFeature():
 
         error = (1/len(Y)) * (np.linalg.norm(np.subtract(Xw,Y)))**2
         print("The error from the two-feature linear regression is: \n", error )
-
-
-
-
-
+# Main:
 l1 = LinearRegressOneFeature()
