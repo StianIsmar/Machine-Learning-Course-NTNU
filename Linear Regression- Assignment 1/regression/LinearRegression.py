@@ -85,14 +85,15 @@ class LinearRegressOneFeature():
         return w, X, Y
 
 
-    # Calculating the model error:
+    # Calculating the model error using the mean squared error given in the assignment:
     def calculateError(self, weights, X, Y):
-        print("weights")
-        print(weights)
-        print("X")
-        print(X)
-        Xw = np.dot(X,weights.T)
-        print(Xw)
+
+        # Need to transpose the weights so that X can be multiplied with X.
+        # X needs is a 325x3 matrix, whilst weights is a 3x1 matrix after it is transposed!
+
+        weights = weights.T
+        Xw = np.dot(X,weights)
+
 
 
 l1 = LinearRegressOneFeature()
