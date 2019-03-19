@@ -1,3 +1,4 @@
+import numpy as np
 class perceptron:
     def __init__(self, x=0, y=0):
         print("constructor")
@@ -14,8 +15,31 @@ class nn:
     input_nodes = 0
     hidden_nodes = 0
     output_nodes = 0
-    def __init__(self, numI, numH, numO):
-        self.input_nodes = numI # The number of features!
-        self.hiddes_nodes = numH
-        self.output_nodes = numO
-n1 = nn(3,2,1)
+    def __init__(self, input_nodes, hidden_nodes, output_nodes):
+        self.input_nodes = input_nodes # The number of features!
+        self.hidden_nodes = hidden_nodes
+        self.output_nodes = output_nodes
+
+        self.weights_ih = np.random.rand(self.hidden_nodes, self.input_nodes + 1)
+        self.weights_ho = np.random.rand(self.output_nodes, self.hidden_nodes + 1)
+
+        self.bias_h = np.empty([self.hidden_nodes, 1])
+        self.bias_o = np.empty([self.output_nodes, 1])
+        # np.random.randint(low=1, high=100, size=4)
+
+
+    def sigmoid(x):
+        res = 1 / (1 + np.exp(-x))
+
+    def feedforward(self, input_sample):
+        hidden = np.dot(self.weights_ih, input_sample)
+        hidden = np.add(hidden,self.bias_h)
+        print(hidden)
+        guess = 0
+        return guess
+            # return code
+
+n1 = nn(2,2,1)
+n1.feedforward([1,2,3])
+
+# Store the weights in a matrix:
