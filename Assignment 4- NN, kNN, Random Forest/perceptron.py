@@ -24,19 +24,25 @@ class nn:
         self.weights_ho = np.random.rand(self.output_nodes, self.hidden_nodes + 1)
 
         self.bias_h = np.empty([self.hidden_nodes, 1])
+        print("bias_h",self.bias_h)
         self.bias_o = np.empty([self.output_nodes, 1])
         # np.random.randint(low=1, high=100, size=4)
 
 
-    def sigmoid(x):
+    def sigmoid(self,x):
         res = 1 / (1 + np.exp(-x))
 
     def feedforward(self, input_sample):
         hidden = np.dot(self.weights_ih, input_sample)
-        hidden = np.add(hidden,self.bias_h)
+        print("dot:",hidden)
+
+        hidden = np.add(hidden.T,self.bias_h)
         print(hidden)
-        guess = 0
-        return guess
+
+        sig = lambda t: self.sigmoid(t)
+        sig(hidden)
+
+        return 0
             # return code
 
 n1 = nn(2,2,1)
